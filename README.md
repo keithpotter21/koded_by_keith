@@ -22,20 +22,43 @@ All editable business copy and structured data are kept in `content/`, rather th
 
 Components render those structures, so replacing local TypeScript content with a CMS adapter later does not require a UI rewrite.
 
-## Phase 1 scope
+## Site scope
 
 Implemented: homepage, responsive navigation, privacy page, design tokens, replaceable hero portrait, pricing, accessibility positioning, and the keyboard-accessible project-needs selector. The selector carries its choice into the visual contact form.
 
-The contact form is intentionally a visual prototype. It provides client-side validation and shows a local confirmation state, but does not submit information. Google Sheets, server validation, email delivery, spam controls, SEO automation, sitemap, robots, and deployment configuration are reserved for later phases.
+The contact form validates in both the browser and on the server. Valid submissions are sent server-side to Google Sheets and a Resend email notification. Until the required environment variables are configured, the form fails safely with a clear email fallback rather than claiming success.
 
 ## Replace before launch
 
-- Update the portrait referenced by `site.portrait` in `content/site.ts`. The current generated placeholder is `public/images/keith-placeholder.png`.
 - Review all copy, pricing, the Y3TI referral URL, and the privacy policy with Keith.
 
 ## Environment
 
-Copy `.env.example` to `.env` for local use. `NUXT_PUBLIC_SITE_URL` is used as the public site URL configuration. Phase 3 will add private variables for lead delivery; none are required for this visual phase.
+Copy `.env.example` to `.env` for local use. `NUXT_PUBLIC_SITE_URL` is public; every other variable is server-only and must be configured in Netlify before deployment.
+
+## Contact delivery setup
+
+### 1. Create the Google Sheet
+
+Create a sheet named `Leads` with this header row, in order:
+
+```text
+Timestamp | Name | Business Name | Email | Phone | Website | Interested In | Message | Source Page | UTM Source | UTM Medium | UTM Campaign | User Agent
+```
+
+Open **Extensions → Apps Script**, replace the editor contents with [scripts/google-sheets-contact-form.gs](scripts/google-sheets-contact-form.gs), and save it. In **Project Settings → Script properties**, add `CONTACT_SHARED_SECRET` with a long random value. Deploy it as a **Web app** that executes as you and permits access to anyone. Copy the deployment URL into `GOOGLE_FORM_ENDPOINT`; use the same random value for `GOOGLE_FORM_SECRET`.
+
+### 2. Configure Resend
+
+Create a Resend API key and verify the sending domain/address. Set `RESEND_API_KEY`, `EMAIL_FROM`, and `CONTACT_NOTIFICATION_EMAIL`. The notification is sent to the address in `CONTACT_NOTIFICATION_EMAIL` and uses the lead’s email as Reply-To.
+
+### 3. Set production variables
+
+Set every non-public variable in the Netlify site’s environment settings. Do not put these values in `NUXT_PUBLIC_*` variables, browser code, or Git.
+
+### Delivery protections
+
+The endpoint has a hidden honeypot, input length limits, allowlisted interest values, server-side validation, request timeouts, and a five-request-per-minute in-memory rate limit per IP. The in-memory limit is a baseline for serverless functions; add a shared edge or Redis rate limiter before high-volume campaigns.
 
 ## Accessibility QA
 
