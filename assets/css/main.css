@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: dark; --ink:#0b0b10; --surface:#14141c; --elevated:#1b1b26; --paper:#f3f1eb; --muted:#aaa8b2; --violet:#8b5cf6; --magenta:#ec4899; --cyan:#22d3ee; }
+:root { color-scheme: dark; --ink:#0b0b10; --surface:#14141c; --elevated:#1b1b26; --paper:#f3f1eb; --muted:#aaa8b2; --violet:#8b5cf6; --magenta:#ec4899; --cyan:#1a73e8; }
 html { scroll-behavior: smooth; background: var(--ink); }
 body { margin: 0; background: var(--ink); color: var(--paper); font-family: 'DM Sans', system-ui, sans-serif; }
 * { box-sizing: border-box; }
@@ -17,5 +17,6 @@ body { margin: 0; background: var(--ink); color: var(--paper); font-family: 'DM 
 .grid-glow { background-image: linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px); background-size:48px 48px; }
 .portrait-orbit { filter: drop-shadow(0 1.5rem 2.5rem rgba(0,0,0,.35)); }
 .portrait-orbit-ring { background: conic-gradient(from 220deg, var(--cyan), var(--violet) 25%, var(--magenta) 54%, #fb7185 75%, var(--cyan)); }
+.hero-greeting { display:inline-flex; align-items:center; gap:.6rem; border:2px solid #343846; border-radius:9999px; background:#20212a; box-shadow:0 .65rem 0 rgba(26,115,232,.38); padding:.8rem 1.35rem; font-size:1.2rem; font-weight:700; line-height:1; }
 #why-me .text-violet { color: #6d28d9; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; } }

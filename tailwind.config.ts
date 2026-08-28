@@ -18,7 +18,7 @@ export default <Partial<Config>>{
         muted: '#aaa8b2',
         violet: '#8b5cf6',
         magenta: '#ec4899',
-        cyan: '#22d3ee',
+        cyan: '#1a73e8',
       },
       fontFamily: {
         display: ['"DM Sans"', 'system-ui', 'sans-serif'],
