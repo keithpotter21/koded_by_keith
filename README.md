@@ -50,7 +50,7 @@ Open **Extensions → Apps Script**, replace the editor contents with [scripts/g
 
 ### 2. Configure Resend
 
-Create a Resend API key and verify the sending domain/address. Set `RESEND_API_KEY`, `EMAIL_FROM`, and `CONTACT_NOTIFICATION_EMAIL`. The notification is sent to the address in `CONTACT_NOTIFICATION_EMAIL` and uses the lead’s email as Reply-To.
+Create a Resend API key with **Sending access**, restricted to the verified `send.keithpotter.net` domain. Set `RESEND_API_KEY`, `EMAIL_FROM` to `Koded by Keith <hello@send.keithpotter.net>`, and `CONTACT_NOTIFICATION_EMAIL` to `hello@keithpotter.net`. The notification is sent to the address in `CONTACT_NOTIFICATION_EMAIL` and uses the lead’s email as Reply-To.
 
 ### 3. Set production variables
 
