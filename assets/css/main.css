@@ -15,6 +15,7 @@ body { margin: 0; background: var(--ink); color: var(--paper); font-family: 'DM 
 .eyebrow { font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.13em; text-transform:uppercase; color:#b7b2c6; }
 .section-shell { width:min(100% - 2rem, 76rem); margin-inline:auto; }
 .grid-glow { background-image: linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px); background-size:48px 48px; }
-.portrait-backdrop { background: radial-gradient(circle at 22% 26%, rgba(34,211,238,.22), transparent 32%), radial-gradient(circle at 82% 35%, rgba(236,72,153,.24), transparent 38%), linear-gradient(145deg, #10111b 10%, #17102c 58%, #11182b 100%); }
+.portrait-orbit { filter: drop-shadow(0 1.5rem 2.5rem rgba(0,0,0,.35)); }
+.portrait-orbit-ring { background: conic-gradient(from 220deg, var(--cyan), var(--violet) 25%, var(--magenta) 54%, #fb7185 75%, var(--cyan)); }
 #why-me .text-violet { color: #6d28d9; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; } }

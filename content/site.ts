@@ -6,7 +6,7 @@ export const site = {
   email: 'hello@keithpotter.net',
   title: 'Koded by Keith | Web Development for Small Businesses',
   description: 'Koded by Keith builds fast, accessible websites for small businesses with SEO, AI search optimization, Google Business Profile support and ongoing website management.',
-  portrait: { src: '/images/keith-potter-hero.png', alt: 'Keith Potter, independent web developer and founder of Koded by Keith.' },
+  portrait: { src: '/images/keith-potter-headshot.png', alt: 'Keith Potter, independent web developer and founder of Koded by Keith.' },
 }
 
 export const navigation: NavItem[] = [
