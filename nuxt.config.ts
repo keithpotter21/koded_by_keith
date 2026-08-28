@@ -21,6 +21,12 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
+    googleFormEndpoint: process.env.GOOGLE_FORM_ENDPOINT,
+    googleFormSecret: process.env.GOOGLE_FORM_SECRET,
+    resendApiKey: process.env.RESEND_API_KEY,
+    emailFrom: process.env.EMAIL_FROM,
+    contactNotificationEmail: process.env.CONTACT_NOTIFICATION_EMAIL,
+    contactRateLimit: process.env.CONTACT_RATE_LIMIT || '5',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://keithpotter.net',
     },
