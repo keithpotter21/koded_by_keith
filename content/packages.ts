@@ -1,12 +1,12 @@
 import type { Package } from './types'
 
 export const buildPackages: Package[] = [
-  { name: 'Starter', price: '$1,495', description: 'A professional web presence for a small business.', detail: 'Approximately 1–3 pages', features: ['Custom website', 'Mobile-first design', 'Accessibility foundation', 'Technical SEO + AI-search foundation', 'Contact form, analytics, and launch support'] },
-  { name: 'Business', price: '$2,495', description: 'More room to tell your story and support local growth.', detail: 'Approximately 4–6 pages', featured: true, features: ['Everything in Starter', 'Expanded services and content', 'Stronger local-search structure', 'Google Business Profile integration', 'More space for business needs'] },
-  { name: 'Custom', price: 'Starting at $4,000', description: 'For larger sites and projects with uncommon requirements.', detail: '7+ pages or custom scope', features: ['Custom functionality', 'Complex integrations', 'Larger content requirements', 'Unusual business needs', 'A project plan shaped around the work'] },
+  { name: 'The Basics', price: '$1,500', description: 'One custom, polished page for the essentials.', detail: 'Starting at', features: ['One custom, polished page', 'Your business, services, and contact information', 'Works on phones (because that’s where people are)', 'Contact form and useful links', 'Basic search setup', 'One round of revisions', 'Launched and ready to do its job'] },
+  { name: 'The Works', price: '$3,000', description: 'A little more room, without the unnecessary nonsense.', detail: 'Starting at', featured: true, features: ['Custom 3–5 page website', 'Services, about, contact, etc.', 'Works on all devices', 'Contact forms, maps, links', 'Basic search setup', 'One round of revisions', 'Launched and ready to do its job'] },
+  { name: 'The Whole Enchilada', price: '$5,000', description: 'The full website. All of it. Yes, the whole thing.', detail: 'Starting at', features: ['Custom 6–10 page website', 'Services, team, testimonials, FAQs, galleries, and more', 'A site structure that makes sense', 'Works on all devices', 'Contact forms, maps, links', 'Basic search setup across the site', 'Two rounds of revisions', 'Launched and ready to do its job'] },
 ]
 
-export const carePlan = { price: '$149/month', title: 'Website Care', items: ['Hosting coordination', 'Routine updates and small content changes', 'Form and uptime monitoring', 'Analytics and Search Console checks', 'Minor improvements and direct support'], note: 'Website Care is optional. Exact monthly scope and response expectations are set in the project agreement.' }
+export const carePlan = { price: '$299/month', title: 'Website Care', items: ['Website hosting, maintenance, and updates', 'Google Business Profile management', 'AI tools when they’re genuinely useful', 'Text-message follow-up and customer-retention tools', 'Ongoing help as your business changes'], note: 'Website Care is optional. Exact monthly scope and response expectations are set in the project agreement.' }
 
 export const accessibilityPackages = [
   { title: 'Accessibility Audit', price: 'Starting at $750', description: 'A focused review with automated testing, keyboard and structural checks, form and contrast review, prioritized findings, and practical WCAG-based recommendations.' },
