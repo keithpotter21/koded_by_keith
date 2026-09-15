@@ -41,6 +41,8 @@ h1,h2,h3,h4,h5,h6 { font-family:'Outfit',system-ui,sans-serif; }
 .reference-hero__copy { position:relative; z-index:1; max-width:44rem; margin-inline:auto; text-align:center; }
 .reference-hero h1 { margin:.7rem 0 1rem; font-size:clamp(3.3rem,8vw,6.3rem); font-weight:700; letter-spacing:-.035em; line-height:.96; }
 .reference-hero h1 em { color:var(--pink); font-style:normal; }
+.wave { display:inline-block; transform-origin:70% 70%; animation:wave 2.4s ease-in-out infinite; }
+@keyframes wave { 0%,60%,100% { transform:rotate(0deg); } 10% { transform:rotate(14deg); } 20% { transform:rotate(-8deg); } 30% { transform:rotate(14deg); } 40% { transform:rotate(-4deg); } 50% { transform:rotate(10deg); } }
 .intro-copy { max-width:42rem; margin:0 auto; font-size:1.04rem; line-height:1.55; }
 .body-copy { max-width:38rem; color:var(--muted); font-size:.96rem; line-height:1.5; }
 .button-row { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.4rem; }
