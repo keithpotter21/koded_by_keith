@@ -1,5 +1,6 @@
 <template>
-  <NuxtLink to="/" class="gradient-text font-mono text-base font-medium tracking-[-0.08em] sm:text-lg" aria-label="Koded by Keith home">
-    &lt;Koded_By_Keith/&gt;
+  <NuxtLink to="/" class="brand-logo" aria-label="Koded By Keith home">
+    <span class="brand-logo__mark" aria-hidden="true">KP</span>
+    <span class="brand-logo__name">Koded By <strong>Keith</strong></span>
   </NuxtLink>
 </template>

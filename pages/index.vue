@@ -3,6 +3,7 @@ import { accessibilityPackages, buildPackages, carePlan } from '~/content/packag
 import { site } from '~/content/site'
 
 const selectedInterest = ref('New Website')
+const currentYear = new Date().getFullYear()
 useHead({ title: site.title, meta: [{ name: 'description', content: site.description }], link: [{ rel: 'canonical', href: 'https://keithpotter.net' }] })
 </script>
 
@@ -11,7 +12,7 @@ useHead({ title: site.title, meta: [{ name: 'description', content: site.descrip
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:text-black">Skip to content</a>
     <SiteHeader />
     <main id="main-content">
-      <section class="reference-hero"><div class="section-shell reference-hero__grid"><div class="reference-hero__copy"><h1>Hi, I’m Keith.<br>I build <em>websites.</em></h1><p class="intro-copy">I have been building websites for a long time. I’m not going to bore you with all the details—unless you’re into that sort of thing, and in that case, let’s get nerdy.</p></div><figure class="hero-photo" aria-label="Portrait of Keith Potter"><img :src="site.portrait.src" :alt="site.portrait.alt" loading="eager"></figure></div></section>
+      <section class="reference-hero"><div class="section-shell reference-hero__grid"><div class="reference-hero__copy"><h1><span class="wave" aria-hidden="true">👋</span> Hi, I’m Keith.<br>I build <em>websites.</em></h1><p class="intro-copy">I have been building websites for a long time. I’m not going to bore you with all the details—unless you’re into that sort of thing, and in that case, let’s get nerdy.</p></div><figure class="hero-photo" aria-label="Portrait of Keith Potter"><img :src="site.portrait.src" :alt="site.portrait.alt" loading="eager"></figure></div></section>
 
       <section id="packages" class="section-shell section-space" aria-labelledby="packages-title"><h2 id="packages-title" class="section-title">You're here. You need a website. I'm here. I want to build you a website.</h2><p class="section-lede">Let’s not overthink this.</p><div class="package-grid"><article v-for="pkg in buildPackages" :key="pkg.name" class="price-card" :class="{ 'price-card--featured': pkg.featured }"><span v-if="pkg.featured" class="popular-tag">Most popular</span><p class="card-kicker">{{ pkg.name }}</p><p class="price-detail">{{ pkg.detail }}</p><h3>{{ pkg.price }}</h3><p class="card-intro">{{ pkg.description }}</p><ul><li v-for="feature in pkg.features" :key="feature"><span>✓</span>{{ feature }}</li></ul><a href="#contact" class="outline-button card-action" @click="selectedInterest = pkg.name">Get Started <span aria-hidden="true">→</span></a></article></div></section>
 
@@ -23,6 +24,6 @@ useHead({ title: site.title, meta: [{ name: 'description', content: site.descrip
 
       <section id="contact" class="section-shell contact-section" aria-labelledby="contact-title"><div class="contact-intro"><p class="pink-eyebrow">Start a project</p><h2 id="contact-title">Let’s talk about<br>your business.</h2><p>Tell me what you’re working on and I’ll get back to you personally.</p><a :href="`mailto:${site.email}`">{{ site.email }}</a></div><div class="contact-form-wrap"><ContactForm :interest="selectedInterest" /></div></section>
     </main>
-    <footer class="site-footer"><div class="section-shell"><SiteLogo /><p>Websites. Accessibility. Results.</p><nav aria-label="Footer navigation"><a href="#main-content">Home</a><a href="#packages">Packages</a><a href="#accessibility">Accessibility</a><a href="#contact">Contact</a></nav></div></footer>
+    <footer class="site-footer"><div class="section-shell"><p>© {{ currentYear }} Koded By Keith. Made with <span aria-hidden="true">☕</span><span class="sr-only">coffee</span> in California.</p></div></footer>
   </div>
 </template>
