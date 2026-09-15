@@ -1,5 +1,5 @@
 import { createError, defineEventHandler, getHeader, getRequestIP, readBody, setResponseStatus } from 'h3'
-import { isRateLimited, sendContactNotification, sendToGoogleSheet, validateContact } from '~/server/utils/contact'
+import { ContactRequestError, getContactEnvironmentFromProcess, isRateLimited, processContactSubmission } from '~/server/utils/contact'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -8,31 +8,22 @@ export default defineEventHandler(async (event) => {
     return null
   }
 
-  const config = useRuntimeConfig(event)
-  // Read credentials only when this server handler is invoked. Keeping these
-  // out of runtimeConfig prevents Nuxt/Nitro from embedding them in builds.
-  const googleFormSecret = process.env.GOOGLE_FORM_SECRET
-  const resendApiKey = process.env.RESEND_API_KEY
-  const limit = Number(config.contactRateLimit) || 5
-  if (isRateLimited(getRequestIP(event, { xForwardedFor: true }) || 'unknown', limit)) {
+  const clientAddress = getRequestIP(event, { xForwardedFor: true }) || 'unknown'
+  const limit = Number(process.env.CONTACT_RATE_LIMIT) || 5
+  if (isRateLimited(clientAddress, limit)) {
     throw createError({ statusCode: 429, statusMessage: 'Please wait a moment before sending another message.' })
   }
 
-  const { data, errors } = validateContact({ ...body, userAgent: getHeader(event, 'user-agent') })
-  if (!data) throw createError({ statusCode: 400, statusMessage: 'Please correct the highlighted fields.', data: { errors } })
-
-  if (!config.googleFormEndpoint || !googleFormSecret || !resendApiKey || !config.emailFrom || !config.contactNotificationEmail) {
-    console.error('Contact delivery is not configured.')
-    throw createError({ statusCode: 503, statusMessage: 'Contact delivery is temporarily unavailable. Please email hello@keithpotter.net.' })
-  }
-
   try {
-    await Promise.all([
-      sendToGoogleSheet(data, config.googleFormEndpoint, googleFormSecret),
-      sendContactNotification(data, { apiKey: resendApiKey, from: config.emailFrom, to: config.contactNotificationEmail }),
-    ])
-    return { ok: true }
+    return await processContactSubmission(body, {
+      clientAddress,
+      userAgent: getHeader(event, 'user-agent'),
+      environment: getContactEnvironmentFromProcess(),
+    })
   } catch (error) {
+    if (error instanceof ContactRequestError) {
+      throw createError({ statusCode: error.statusCode, statusMessage: error.publicMessage, data: { errors: error.errors } })
+    }
     console.error('Contact delivery failed.', error instanceof Error ? error.message : 'Unknown error')
     throw createError({ statusCode: 502, statusMessage: 'Your message could not be delivered. Please email hello@keithpotter.net.' })
   }

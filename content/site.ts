@@ -10,7 +10,7 @@ export const site = {
 }
 
 export const navigation: NavItem[] = [
-  { label: 'Why Me', href: '#why-me' }, { label: 'What I Do', href: '#services' }, { label: 'Pricing', href: '#pricing' }, { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '#main-content' }, { label: 'Packages', href: '#packages' }, { label: 'Accessibility', href: '#accessibility' },
 ]
 
 export const credentials: Credential[] = [
