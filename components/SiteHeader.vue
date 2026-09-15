@@ -46,7 +46,7 @@ onMounted(() => {
       <div class="site-nav__actions">
         <a href="#contact" class="header-cta">Let’s Talk</a>
         <button class="theme-toggle" type="button" :aria-label="isLight ? 'Switch to dark mode' : 'Switch to light mode'" :aria-pressed="isLight" @click="toggleTheme">
-          <svg v-if="isLight" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.7 15.4A8 8 0 0 1 8.6 3.3 8.6 8.6 0 1 0 20.7 15.4Z" /></svg>
+          <svg v-if="isLight" aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z" /></svg>
           <svg v-else aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41" /></svg>
         </button>
         <button ref="menuButton" class="menu-toggle" type="button" :aria-expanded="open" aria-controls="mobile-nav" @click="open = !open">
