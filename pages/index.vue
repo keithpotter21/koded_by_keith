@@ -24,6 +24,6 @@ useHead({ title: site.title, meta: [{ name: 'description', content: site.descrip
 
       <section id="contact" class="section-shell contact-section" aria-labelledby="contact-title"><div class="contact-intro"><p class="pink-eyebrow">Start a project</p><h2 id="contact-title">Let’s talk about<br>your business.</h2><p>Tell me what you’re working on and I’ll get back to you personally.</p><a :href="`mailto:${site.email}`">{{ site.email }}</a></div><div class="contact-form-wrap"><ContactForm :interest="selectedInterest" /></div></section>
     </main>
-    <footer class="site-footer"><div class="section-shell"><p>© {{ currentYear }} Koded By Keith. Made with <span aria-hidden="true">☕</span><span class="sr-only">coffee</span> in California.</p><nav aria-label="Footer navigation"><a href="#main-content">Home</a><NuxtLink to="/privacy">Privacy</NuxtLink><a :href="`mailto:${site.email}`">Email</a></nav></div></footer>
+    <footer class="site-footer"><div class="section-shell"><p>© {{ currentYear }} Koded By Keith. Made with <span aria-hidden="true">☕</span><span class="sr-only">coffee</span> in California.</p></div></footer>
   </div>
 </template>
