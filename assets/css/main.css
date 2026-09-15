@@ -20,12 +20,12 @@ body { margin:0; background:var(--ink); color:var(--paper); font-family:'DM Sans
 .site-nav__actions { display:flex; align-items:center; justify-self:end; gap:.8rem; }
 .header-cta { display:none; align-items:center; justify-content:center; min-height:3rem; border-radius:999px; padding:.72rem 1.55rem; background:var(--pink); box-shadow:0 .7rem 1.7rem rgba(236,78,178,.28); color:#fff!important; font-size:.88rem; font-weight:700; text-decoration:none; transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease; }
 .header-cta:hover { transform:translateY(-2px); background:#ff62c1; box-shadow:0 .85rem 2rem rgba(236,78,178,.38); color:#fff!important; }
-.theme-toggle,.menu-toggle { display:inline-flex; align-items:center; justify-content:center; min-width:3rem; min-height:3rem; border:1px solid var(--line); border-radius:999px; background:var(--panel); color:var(--muted); cursor:pointer; transition:transform .2s ease,border-color .2s ease,color .2s ease,background-color .2s ease,box-shadow .2s ease; }
-.theme-toggle { position:relative; min-width:3.25rem; min-height:3.25rem; border-color:transparent; background:#171923; box-shadow:0 0 0 2px var(--pink); }
-.theme-toggle::before { position:absolute; inset:.28rem; border:1px solid rgba(255,255,255,.1); border-radius:inherit; content:''; }
-.theme-toggle:hover,.menu-toggle:hover { transform:translateY(-2px); border-color:var(--pink); color:var(--paper); }
-.theme-toggle:hover { box-shadow:0 0 0 3px var(--pink),0 .55rem 1.25rem rgba(236,78,178,.2); }
-.theme-toggle svg { position:relative; z-index:1; width:1.35rem; height:1.35rem; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.65; }
+.theme-toggle,.menu-toggle { display:inline-flex; align-items:center; justify-content:center; min-width:3rem; min-height:3rem; border:1px solid var(--line); border-radius:999px; background:var(--panel); color:var(--muted); cursor:pointer; transition:all .2s ease; }
+.theme-toggle { display:grid; width:40px; height:40px; min-width:40px; min-height:40px; place-items:center; border:1px solid var(--line); border-radius:50%; background:var(--card); color:var(--muted); }
+.theme-toggle:hover { color:var(--pink); transform:rotate(15deg) scale(1.08); }
+.theme-toggle:focus-visible { outline:2px solid var(--pink); outline-offset:2px; }
+.menu-toggle:hover { transform:translateY(-2px); border-color:var(--pink); color:var(--paper); }
+.theme-toggle svg { width:1.35rem; height:1.35rem; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.65; }
 .mobile-nav { border-top:1px solid var(--line); background:var(--header-bg); padding:1.25rem 1rem; }
 .mobile-nav .header-cta { display:flex; }
 .gradient-text { background:linear-gradient(100deg,#ed78d2,#a78bfa); background-clip:text; -webkit-background-clip:text; color:transparent; }
@@ -110,9 +110,8 @@ html.light .site-page { background:radial-gradient(circle at 73% 5%,rgba(236,78,
 html.light .site-header a { color:rgba(23,26,34,.7); }
 html.light .site-header a:hover { color:var(--paper); }
 html.light .site-header .header-cta,html.light .site-header .header-cta:hover { color:#fff!important; }
-html.light .theme-toggle { border-color:#e6ded5; background:#fffdfa; box-shadow:0 0 0 1px rgba(70,66,75,.04); color:#687080; }
-html.light .theme-toggle::before { border-color:rgba(70,66,75,.07); }
-html.light .theme-toggle:hover { border-color:var(--pink); box-shadow:0 0 0 2px var(--pink),0 .55rem 1.25rem rgba(236,78,178,.13); }
+html.light .theme-toggle { border-color:#e6ded5; background:var(--card); color:#687080; }
+html.light .theme-toggle:hover { color:var(--pink); }
 html.light .reference-hero { background:linear-gradient(90deg,#fff 0%,#f7f8fc 56%,#fff2fa 100%); }
 html.light .hero-photo { border-color:rgba(23,26,34,.2); background:#eef1f7; box-shadow:0 0 0 .65rem rgba(23,26,34,.06),0 1.5rem 3.5rem rgba(43,34,47,.16); }
 html.light .price-card,html.light .access-card { border-color:rgba(23,26,34,.08); background:linear-gradient(145deg,#fff,#f0f2f7); box-shadow:0 .8rem 2rem rgba(35,30,42,.06); }
