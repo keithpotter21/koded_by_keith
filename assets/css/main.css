@@ -20,7 +20,7 @@ h1,h2,h3,h4,h5,h6 { font-family:'Outfit',system-ui,sans-serif; }
 .site-nav__links { display:none; align-items:center; justify-content:center; gap:2.4rem; }
 .site-nav__actions { display:flex; align-items:center; justify-self:end; gap:.8rem; }
 .header-cta { display:none; align-items:center; justify-content:center; height:40px; min-height:40px; border-radius:999px; padding:.55rem 1.4rem; background:var(--pink); box-shadow:0 .7rem 1.7rem rgba(236,78,178,.28); color:#fff!important; font-size:.88rem; font-weight:700; text-decoration:none; transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease; }
-.header-cta:hover { transform:translateY(-2px); background:#ff62c1; box-shadow:0 .85rem 2rem rgba(236,78,178,.38); color:#fff!important; }
+.header-cta:hover { background:#ff62c1; box-shadow:0 .85rem 2rem rgba(236,78,178,.38); color:#fff!important; }
 .theme-toggle,.menu-toggle { display:inline-flex; align-items:center; justify-content:center; min-width:3rem; min-height:3rem; border:1px solid var(--line); border-radius:999px; background:var(--panel); color:var(--muted); cursor:pointer; transition:all .2s ease; }
 .theme-toggle { display:grid; width:40px; height:40px; min-width:40px; min-height:40px; place-items:center; border:1px solid var(--line); border-radius:50%; background:var(--card); color:var(--muted); }
 .theme-toggle:hover { color:var(--pink); transform:rotate(15deg) scale(1.08); }
