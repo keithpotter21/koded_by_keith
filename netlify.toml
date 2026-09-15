@@ -2,25 +2,3 @@
   command = "npm run generate"
   publish = "dist"
   functions = "netlify/functions"
-
-[[redirects]]
-  from = "/api/contact"
-  to = "/.netlify/functions/contact"
-  status = 200
-  force = true
-
-  [redirects.rate_limit]
-    window_limit = 5
-    window_size = 60
-    aggregate_by = ["ip", "domain"]
-
-[[redirects]]
-  from = "/api/contact-token"
-  to = "/.netlify/functions/contact-token"
-  status = 200
-  force = true
-
-  [redirects.rate_limit]
-    window_limit = 20
-    window_size = 60
-    aggregate_by = ["ip", "domain"]

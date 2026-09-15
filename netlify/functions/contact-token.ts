@@ -1,5 +1,14 @@
-import type { Context } from '@netlify/functions'
+import type { Config, Context } from '@netlify/functions'
 import { createFormTimingToken, getContactEnvironmentFromProcess } from '../../server/utils/contact'
+
+export const config: Config = {
+  method: 'GET',
+  rateLimit: {
+    windowLimit: 20,
+    windowSize: 60,
+    aggregateBy: ['ip', 'domain'],
+  },
+}
 
 export default async (_request: Request, _context: Context) => {
   const environment = getContactEnvironmentFromProcess()

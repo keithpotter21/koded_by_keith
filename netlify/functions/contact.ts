@@ -1,10 +1,19 @@
-import type { Context } from '@netlify/functions'
+import type { Config, Context } from '@netlify/functions'
 import {
   ContactRequestError,
   getContactEnvironmentFromProcess,
   processContactSubmission,
   type ContactInput,
 } from '../../server/utils/contact'
+
+export const config: Config = {
+  method: 'POST',
+  rateLimit: {
+    windowLimit: 5,
+    windowSize: 60,
+    aggregateBy: ['ip', 'domain'],
+  },
+}
 
 function json(body: unknown, status = 200) {
   return Response.json(body, {

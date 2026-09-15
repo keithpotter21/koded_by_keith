@@ -18,6 +18,8 @@ const submitError = ref('')
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 const turnstileSiteKey = String(runtimeConfig.public.turnstileSiteKey || '')
+const contactEndpoint = import.meta.dev ? '/api/contact' : '/.netlify/functions/contact'
+const contactTokenEndpoint = import.meta.dev ? '/api/contact-token' : '/.netlify/functions/contact-token'
 const fields = reactive({ name: '', business: '', email: '', phone: '', website: '', interest: props.interest, message: '', company: '' })
 const errors = reactive<Record<string, string>>({})
 const formToken = ref('')
@@ -44,7 +46,7 @@ async function refreshFormToken() {
   formToken.value = ''
   if (readinessTimer) clearTimeout(readinessTimer)
   try {
-    const result = await $fetch<{ token: string; readyAt: number }>('/api/contact-token')
+    const result = await $fetch<{ token: string; readyAt: number }>(contactTokenEndpoint)
     formToken.value = result.token
     const wait = Math.max(0, result.readyAt - Date.now())
     readinessTimer = setTimeout(() => { formReady.value = true }, wait)
@@ -123,7 +125,7 @@ async function submit() {
   }
   submitting.value = true
   try {
-    await $fetch('/api/contact', {
+    await $fetch(contactEndpoint, {
       method: 'POST',
       body: {
         ...fields,
