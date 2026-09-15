@@ -71,7 +71,7 @@ async function renderTurnstile() {
   turnstileWidgetId = window.turnstile.render(turnstileContainer.value, {
     sitekey: turnstileSiteKey,
     action: 'contact',
-    theme: 'dark',
+    theme: document.documentElement.classList.contains('light') ? 'light' : 'dark',
     callback: (token: string) => {
       turnstileToken.value = token
       spamProtectionError.value = ''
@@ -84,6 +84,13 @@ async function renderTurnstile() {
   })
 }
 
+async function handleThemeChange() {
+  turnstileToken.value = ''
+  if (turnstileWidgetId && window.turnstile) window.turnstile.remove(turnstileWidgetId)
+  turnstileWidgetId = ''
+  await renderTurnstile()
+}
+
 async function resetSpamProtection() {
   turnstileToken.value = ''
   if (turnstileWidgetId && window.turnstile) window.turnstile.reset(turnstileWidgetId)
@@ -91,10 +98,12 @@ async function resetSpamProtection() {
 }
 
 onMounted(async () => {
+  window.addEventListener('site-theme-change', handleThemeChange)
   await Promise.all([refreshFormToken(), renderTurnstile()])
 })
 
 onBeforeUnmount(() => {
+  window.removeEventListener('site-theme-change', handleThemeChange)
   if (readinessTimer) clearTimeout(readinessTimer)
   if (turnstileWidgetId && window.turnstile) window.turnstile.remove(turnstileWidgetId)
 })

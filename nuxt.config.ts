@@ -18,6 +18,9 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'en' },
       meta: [{ name: 'theme-color', content: '#0b0b10' }],
+      script: [{
+        innerHTML: `(function(){try{var saved=localStorage.getItem('theme');var light=saved?saved==='light':matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.classList.toggle('light',light);document.documentElement.style.colorScheme=light?'light':'dark'}catch(e){}})()`,
+      }],
     },
   },
   runtimeConfig: {
