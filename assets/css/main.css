@@ -29,6 +29,10 @@ h1,h2,h3,h4,h5,h6 { font-family:'Outfit',system-ui,sans-serif; }
 .theme-toggle svg { width:1.35rem; height:1.35rem; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.65; }
 .mobile-nav { border-top:1px solid var(--line); background:var(--header-bg); padding:1.25rem 1rem; }
 .mobile-nav .header-cta { display:flex; }
+.brand-logo { display:inline-flex; align-items:center; gap:.7rem; font-family:'Outfit',system-ui,sans-serif; font-size:1.08rem; font-weight:700; letter-spacing:-.025em; line-height:1; text-decoration:none; white-space:nowrap; }
+.brand-logo__mark { display:grid; width:2.65rem; height:2.65rem; place-items:center; border-radius:.8rem; background:linear-gradient(145deg,#9b5cf6,var(--pink)); box-shadow:0 .55rem 1.2rem rgba(236,78,178,.22); color:#fff; font-size:.88rem; font-weight:800; letter-spacing:-.06em; transform:rotate(-4deg); }
+.brand-logo__name { color:var(--paper); }
+.brand-logo__name strong { color:var(--pink); font-weight:700; }
 .gradient-text { background:linear-gradient(100deg,#ed78d2,#a78bfa); background-clip:text; -webkit-background-clip:text; color:transparent; }
 .pink-eyebrow,.card-kicker { color:#dd76c7; font-family:'DM Mono',monospace; font-size:.66rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
 .reference-hero { border-bottom:1px solid var(--line); background:linear-gradient(90deg,#090a0e 0%,#0d0d13 56%,#19101d 100%); }
