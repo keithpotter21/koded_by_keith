@@ -1,6 +1,6 @@
 # <koded_by_keith/>
 
-Phase 1 implementation for Keith Potter’s small-business web-development site.
+Production implementation for Keith Potter’s small-business web-development site.
 
 ## Run locally
 
@@ -52,13 +52,17 @@ Open **Extensions → Apps Script**, replace the editor contents with [scripts/g
 
 Create a Resend API key with **Sending access**, restricted to the verified `send.keithpotter.net` domain. Set `RESEND_API_KEY`, `EMAIL_FROM` to `Koded by Keith <hello@send.keithpotter.net>`, and `CONTACT_NOTIFICATION_EMAIL` to `hello@keithpotter.net`. The notification is sent to the address in `CONTACT_NOTIFICATION_EMAIL` and uses the lead’s email as Reply-To.
 
-### 3. Set production variables
+### 3. Configure Cloudflare Turnstile
 
-Set every non-public variable in the Netlify site’s environment settings. Do not put these values in `NUXT_PUBLIC_*` variables, browser code, or Git.
+Create a Turnstile widget for the production hostname in Cloudflare. Put its public site key in `NUXT_PUBLIC_TURNSTILE_SITE_KEY` and its private key in `TURNSTILE_SECRET_KEY`. Generate a separate signing secret with `openssl rand -hex 32` and store it as `CONTACT_FORM_SIGNING_SECRET`. Set `TURNSTILE_ALLOWED_HOSTNAMES` to a comma-separated allowlist such as `keithpotter.net,www.keithpotter.net`.
+
+### 4. Set production variables
+
+Set every variable in the Netlify site’s environment settings. Only the Turnstile site key and site URL use the `NUXT_PUBLIC_*` prefix; never put the signing secret, Turnstile secret key, Google secret, or Resend key in browser code or Git.
 
 ### Delivery protections
 
-The endpoint has a hidden honeypot, input length limits, allowlisted interest values, server-side validation, request timeouts, and a five-request-per-minute in-memory rate limit per IP. The in-memory limit is a baseline for serverless functions; add a shared edge or Redis rate limiter before high-volume campaigns.
+The form uses Cloudflare Turnstile, a server-signed form-age check, an off-screen honeypot, strict server validation, and Netlify edge rate limits. The delivery endpoint permits five requests per minute per domain and client IP; the timing-token endpoint permits twenty. Identical submissions are suppressed for fifteen minutes using strongly consistent Netlify Blobs writes. Local Nuxt development falls back to an in-memory rate limit and duplicate cache.
 
 ## Accessibility QA
 
