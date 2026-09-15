@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,8 +6,9 @@
 :root { color-scheme:dark; --ink:#08090d; --panel:#121319; --card:#15161e; --line:rgba(255,255,255,.08); --paper:#f6f4f8; --muted:#a5a1aa; --pink:#ec4eb2; --header-bg:rgba(8,9,13,.88); }
 html.light { color-scheme:light; --ink:#f7f8fc; --panel:#eef1f7; --card:#fff; --line:rgba(25,30,42,.12); --paper:#171a22; --muted:#676c78; --header-bg:rgba(247,248,252,.9); }
 html { scroll-behavior:smooth; background:var(--ink); }
-body { margin:0; background:var(--ink); color:var(--paper); font-family:'DM Sans',system-ui,sans-serif; transition:background-color .25s ease,color .25s ease; }
+body { margin:0; background:var(--ink); color:var(--paper); font-family:'Inter',system-ui,sans-serif; transition:background-color .25s ease,color .25s ease; }
 * { box-sizing:border-box; }
+h1,h2,h3,h4,h5,h6 { font-family:'Outfit',system-ui,sans-serif; }
 ::selection { background:#f280cc; color:#09090d; }
 :focus-visible { outline:3px solid #f280cc; outline-offset:4px; }
 .section-shell { width:min(100% - 2.5rem, 76rem); margin-inline:auto; }
