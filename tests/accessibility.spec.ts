@@ -98,7 +98,7 @@ test.describe("accessibility", () => {
     ).toHaveAttribute("href", "/#contact");
   });
 
-  test("package detail and CTA text meet AA contrast in both themes", async ({
+  test("small package, eyebrow, and CTA text meet AA contrast in both themes", async ({
     page,
   }) => {
     await page.addInitScript(() => localStorage.setItem("theme", "dark"));
@@ -108,28 +108,32 @@ test.describe("accessibility", () => {
         await page
           .getByRole("button", { name: "Switch to light mode" })
           .click();
-      for (const selector of [".price-card li", ".price-card .card-action"]) {
-        const colors = await page
+      const packageSurfaces =
+        theme === "light"
+          ? ["rgb(255, 255, 255)", "rgb(240, 242, 247)"]
+          : ["rgb(22, 23, 31)", "rgb(17, 18, 23)"];
+      const checks = [
+        { selector: ".price-card li", backgrounds: packageSurfaces },
+        { selector: ".price-detail", backgrounds: packageSurfaces },
+        { selector: ".card-kicker", backgrounds: packageSurfaces },
+        { selector: ".price-card .card-action", backgrounds: packageSurfaces },
+        {
+          selector: ".pink-eyebrow",
+          backgrounds:
+            theme === "light" ? ["rgb(247, 248, 252)"] : ["rgb(8, 9, 13)"],
+        },
+      ];
+      for (const { selector, backgrounds } of checks) {
+        const foreground = await page
           .locator(selector)
           .first()
-          .evaluate((element) => {
-            const foreground = getComputedStyle(element).color;
-            let current: Element | null = element;
-            let background = "rgb(255, 255, 255)";
-            while (current) {
-              const candidate = getComputedStyle(current).backgroundColor;
-              if (candidate && candidate !== "rgba(0, 0, 0, 0)") {
-                background = candidate;
-                break;
-              }
-              current = current.parentElement;
-            }
-            return { foreground, background };
-          });
-        expect(
-          contrastRatio(colors.foreground, colors.background),
-          `${theme} ${selector}`,
-        ).toBeGreaterThanOrEqual(4.5);
+          .evaluate((element) => getComputedStyle(element).color);
+        for (const background of backgrounds) {
+          expect(
+            contrastRatio(foreground, background),
+            `${theme} ${selector} against ${background}`,
+          ).toBeGreaterThanOrEqual(4.5);
+        }
       }
     }
   });

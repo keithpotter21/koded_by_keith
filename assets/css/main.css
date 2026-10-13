@@ -780,6 +780,10 @@ html.light .access-card {
 html.light .price-detail {
   color: #5f6470;
 }
+html.light .pink-eyebrow,
+html.light .card-kicker {
+  color: #8a1f64;
+}
 html.light .price-card ul,
 html.light .check-list {
   color: #4f5562;
