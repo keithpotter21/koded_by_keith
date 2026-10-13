@@ -12,6 +12,7 @@
     "preview": "nuxt preview",
     "lint": "eslint .",
     "format": "prettier --check .",
+    "test:unit": "node --experimental-transform-types --test unit/contact.test.ts",
     "test:a11y": "playwright test"
   },
   "devDependencies": {

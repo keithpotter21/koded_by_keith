@@ -43,10 +43,12 @@ Copy `.env.example` to `.env` for local use. `NUXT_PUBLIC_SITE_URL` is public; e
 Create a sheet named `Leads` with this header row, in order:
 
 ```text
-Timestamp | Name | Business Name | Email | Phone | Website | Interested In | Message | Source Page | UTM Source | UTM Medium | UTM Campaign | User Agent
+Timestamp | Name | Business Name | Email | Phone | Website | Interested In | Package | Message | Source Page | UTM Source | UTM Medium | UTM Campaign | User Agent
 ```
 
 Open **Extensions → Apps Script**, replace the editor contents with [scripts/google-sheets-contact-form.gs](scripts/google-sheets-contact-form.gs), and save it. In **Project Settings → Script properties**, add `CONTACT_SHARED_SECRET` with a long random value. Deploy it as a **Web app** that executes as you and permits access to anyone. Copy the deployment URL into `GOOGLE_FORM_ENDPOINT`; use the same random value for `GOOGLE_FORM_SECRET`.
+
+Apps Script is deployed separately from this repository. After changing the script, create a new Apps Script deployment (or update the existing deployment) and confirm that the `Leads` sheet header matches the row above. A Netlify deploy does not publish Apps Script changes.
 
 ### 2. Configure Resend
 
