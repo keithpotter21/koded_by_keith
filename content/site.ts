@@ -4,6 +4,7 @@ export const site = {
   name: '<koded_by_keith/>',
   owner: 'Keith Potter',
   email: 'hello@keithpotter.net',
+  phone: { display: '661-563-4553', e164: '+16615634553' },
   title: 'Koded by Keith | Web Development for Small Businesses',
   description: 'Koded by Keith builds fast, accessible websites for small businesses with SEO, AI search optimization, Google Business Profile support and ongoing website management.',
   portrait: { src: '/images/keith-potter-headshot-original.jpeg', alt: 'Keith Potter, independent web developer and founder of Koded by Keith.' },

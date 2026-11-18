@@ -701,9 +701,14 @@ h6 {
   font-size: 1.05rem;
   line-height: 1.65;
 }
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-top: 2.5rem;
+}
 .contact-intro a {
   display: inline-block;
-  margin-top: 2.5rem;
   color: #368cf5;
   font-size: 1rem;
   font-weight: 600;

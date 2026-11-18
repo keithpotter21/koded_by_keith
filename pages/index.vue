@@ -219,7 +219,10 @@ function selectInterest(interest: string) {
           <p>
             Tell me what you’re working on and I’ll get back to you personally.
           </p>
-          <a :href="`mailto:${site.email}`">{{ site.email }}</a>
+          <div class="contact-links">
+            <a :href="`mailto:${site.email}`">{{ site.email }}</a>
+            <a :href="`tel:${site.phone.e164}`">Call {{ site.phone.display }}</a>
+          </div>
         </div>
         <div class="contact-form-wrap">
           <ContactForm
